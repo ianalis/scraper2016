@@ -27,4 +27,4 @@ It also accepts the following parameters:
 
 ## Acknowledgement
 
-I thank Aivin Solatorio for making me aware of the existence of the `cloudflare-scrape` module. I would have used Selenium, which is more cumbersome, to use otherwise.
+I thank Aivin Solatorio for making me aware of the existence of the `cloudflare-scrape` module. I would have used Selenium, which is more cumbersome.
