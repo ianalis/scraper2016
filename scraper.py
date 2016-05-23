@@ -41,13 +41,13 @@ __license__ = "MIT"
 
 BASE_URL = 'https://www.pilipinaselectionresults2016.com'
 
-_ = lambda s: s.replace('/', '_')
+_ = lambda s: s.replace('/', '_').encode('utf8')
 
 def download_json(scraper, target_info, parent_dirs, basedir, 
                   delay_min, delay_max):
     """Download json file, save it then return json content"""
     name = _(target_info['name'])
-    suburl = target_info['url']
+    suburl = target_info['url'].encode('utf8')
     out_dir = os.path.join(basedir, *parent_dirs)
     out_fpath = os.path.join(out_dir, name+'.json')
     
@@ -134,11 +134,11 @@ def scrape_results(basedir='data', region=None, delay_min=1, delay_max=3):
                                                      .content
                                     contest_content = json.loads(content)
                                     out_dir = os.path.join(basedir, 
-                                                        *parent_dirs)
+                                                           *parent_dirs)
                                     if not os.path.exists(out_dir):
                                         os.makedirs(out_dir)
                                     out_fpath = os.path.join(out_dir, 
-                                                contest_content['name']+'.json')
+                                            _(contest_content['name'])+'.json')
                                     out_file = open(out_fpath, 'w')
                                     out_file.write(content)
                                     out_file.close()
